@@ -1,0 +1,50 @@
+/* Apply styles to all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Set background color and paragraph styles */
+body {
+    background-color: lightyellow;
+    color: black;
+    padding: 20px;
+}
+
+/* Title styling */
+.title {
+    text-align: center;
+    color: red;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+/* Heading styles */
+h2 {
+    font-size: 24px;
+    text-decoration: underline;
+    margin-top: 20px;
+}
+
+/* Paragraph styling */
+p {
+    font-size: 18px;
+    color: blue;
+    margin-bottom: 15px;
+}
+
+/* Highlight important words */
+.highlight {
+    font-weight: bold;
+    background-color: yellow;
+}
+
+/* Image styling */
+.nature-img {
+    display: block;
+    width: 60%;
+    margin: 20px auto;
+    border: 3px solid green;
+}

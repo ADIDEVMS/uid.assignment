@@ -1,0 +1,23 @@
+/* Ensures no underline on links */
+#myList a {
+    text-decoration: none;
+    font-style: italic;
+    list-style-type: circle;
+}
+
+/* Link Pseudo-Classes */
+#myList a:link {
+    color: blue; /* color for unvisited links */
+}
+
+#myList a:visited {
+    color: purple; /* color for visited links */
+}
+
+#myList a:hover {
+    color: red; /* color when hovering over the link */
+}
+
+#myList a:active {
+    color: green; /* color when the link is active */
+}

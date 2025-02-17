@@ -1,0 +1,33 @@
+/* Style for the table */
+table {
+    width: 80%; /* Set table width */
+    margin: 20px auto; /* Center the table */
+    border-collapse: collapse; /* Remove gaps between table cells */
+}
+
+/* Style for table headers */
+th {
+    background-color: black; /* Black background */
+    color: white; /* White text */
+    padding: 10px;
+    text-align: center; /* Center text */
+    font-size: 18px;
+    border: 2px solid black; /* Black border */
+}
+
+/* Style for table cells */
+td {
+    border: 2px solid black; /* Black border */
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Style for alternate row colors */
+tr:nth-child(odd) {
+    background-color: gray; /* Gray for odd rows */
+}
+
+tr:nth-child(even) {
+    background-color: lightgreen; /* Light green for even rows */
+}
