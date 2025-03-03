@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Web Design</title>
+    <style>
+        /* Make the body centered */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        /* Default image */
+        .responsive-image {
+            width: 50%;
+            max-width: 500px;
+            height: auto;
+        }
+
+        /* Change image at 600px and 1500px */
+        @media (max-width: 600px) {
+            .responsive-image {
+                content: url('small.jpg'); /* Replace with actual small image */
+            }
+        }
+
+        @media (min-width: 1500px) {
+            .responsive-image {
+                content: url('large.jpg'); /* Replace with actual large image */
+            }
+        }
+
+        /* Table Styling */
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Table width distribution at 1500px */
+        @media (min-width: 1500px) {
+            table {
+                width: 80%;
+            }
+            th:nth-child(1), td:nth-child(1) { width: 30%; }
+            th:nth-child(2), td:nth-child(2) { width: 40%; }
+            th:nth-child(3), td:nth-child(3) { width: 30%; }
+        }
+
+        /* Stacked Table at 600px */
+        @media (max-width: 600px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+                width: 100%;
+            }
+            tr {
+                margin-bottom: 10px;
+                border-bottom: 2px solid black;
+            }
+            th {
+                display: none;
+            }
+            td {
+                text-align: left;
+                padding-left: 50%;
+                position: relative;
+            }
+            td::before {
+                position: absolute;
+                left: 10px;
+                width: 40%;
+                font-weight: bold;
+            }
+            td:nth-child(1)::before { content: "First Name: "; }
+            td:nth-child(2)::before { content: "Last Name: "; }
+            td:nth-child(3)::before { content: "Age: "; }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Responsive Image</h2>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-C_UAhXq9GfuGO452EEzfbKnh1viQB9EDBQ&s" alt="Responsive Image" class="responsive-image">
+
+    <h2>Responsive Table</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>xx</td>
+                <td>yy</td>
+                <td>22</td>
+            </tr>
+            <tr>
+                <td>tt</td>
+                <td>ss</td>
+                <td>21</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLUB Website</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        .header {
+            background-color: white;
+            border: 2px solid black;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Container for content */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 15%;
+            min-width: 100px;
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            border: 1px solid black;
+            margin: 5px 0;
+            text-decoration: none;
+            color: black;
+            background-color: lightgray;
+        }
+
+        /* Main content */
+        .content {
+            width: 60%;
+            border: 2px solid black;
+            padding: 20px;
+            text-align: left;
+        }
+
+        /* Right Box */
+        .right-box {
+            width: 20%;
+            min-width: 120px;
+            border: 2px solid black;
+            padding: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .sidebar, .content, .right-box {
+                width: 90%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">CLUB Website</div>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="#">Link1</a>
+            <a href="#">Link2</a>
+            <a href="#">Link3</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            Introduction to the club, details. You can have 3 different sections. The links will go to different sections.
+        </div>
+
+        <!-- Right Box -->
+        <div class="right-box">
+            Organized by
+        </div>
+
+    </div>
+
+</body>
+</html>
