@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1f4c5c;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 50%;
+            background-color: #0d3b4c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        input, select {
+            width: 80%;
+            padding: 8px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 5px;
+            font-size: 16px;
+        }
+        .submit {
+            background-color: orange;
+            color: black;
+        }
+        .reset {
+            background-color: red;
+            color: white;
+        }
+        .radio-group, .checkbox-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 5px 0;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        #nameDisplay {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+    <script>
+        function calculateAge() {
+            let dob = document.getElementById("dob").value;
+            if (dob) {
+                let birthYear = new Date(dob).getFullYear();
+                let currentYear = new Date().getFullYear();
+                let age = currentYear - birthYear;
+                document.getElementById("age").value = age;
+            }
+        }
+
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission
+
+            let firstName = document.getElementById("firstName").value.trim();
+            let lastName = document.getElementById("lastName").value.trim();
+            let dob = document.getElementById("dob").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let errorMessage = document.getElementById("errorMessage");
+
+            errorMessage.innerHTML = ""; // Clear previous errors
+
+            if (firstName === "" || lastName === "") {
+                errorMessage.innerHTML = "First Name and Last Name are required.";
+                return false;
+            }
+
+            // Age Validation
+            let birthYear = new Date(dob).getFullYear();
+            let currentYear = new Date().getFullYear();
+            let age = currentYear - birthYear;
+
+            if (age < 15 || age > 30) {
+                errorMessage.innerHTML = "Age must be between 15 and 30.";
+                return false;
+            }
+
+            // Password Validation
+            let passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+            if (!password.match(passwordPattern)) {
+                errorMessage.innerHTML = "Password must be at least 8 characters, with at least one uppercase letter, one lowercase letter, and one number.";
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                errorMessage.innerHTML = "Passwords do not match.";
+                return false;
+            }
+
+            // Display first and last name
+            alert("First Name: " + firstName + "\nLast Name: " + lastName);
+            document.getElementById("nameDisplay").innerHTML = "First Name: " + firstName + " | Last Name: " + lastName;
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Application Form</h2>
+        <form onsubmit="return validateForm(event)">
+            <label>First Name:</label>
+            <input type="text" id="firstName" required><br>
+
+            <label>Last Name:</label>
+            <input type="text" id="lastName" required><br>
+
+            <label>Date of Birth:</label>
+            <input type="date" id="dob" required onchange="calculateAge()"><br>
+
+            <label>Age:</label>
+            <input type="text" id="age" disabled><br>
+
+            <label>Gender:</label>
+            <select>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select><br>
+
+            <label>Email Address:</label>
+            <input type="email" required><br>
+
+            <label>Positions Available:</label><br>
+            <div class="radio-group">
+                <input type="radio" name="position"> Junior Developer
+                <input type="radio" name="position"> Mid-level Developer
+                <input type="radio" name="position"> Senior Developer
+            </div>
+
+            <label>Programming Languages:</label><br>
+            <div class="checkbox-group">
+                <input type="checkbox"> Java
+                <input type="checkbox"> JavaScript
+                <input type="checkbox"> Python
+            </div>
+
+            <label>Password:</label>
+            <input type="password" id="password" required><br>
+
+            <label>Confirm Password:</label>
+            <input type="password" id="confirmPassword" required><br>
+
+            <div class="error" id="errorMessage"></div>
+
+            <div class="buttons">
+                <button type="submit" class="submit">Submit</button>
+                <button type="reset" class="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="nameDisplay"></div>
+</body>
+</html>
