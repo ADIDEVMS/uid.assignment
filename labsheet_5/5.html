@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Assignment 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Assignment 5</h1>
+
+    <!-- Question 1: Print Pattern -->
+    <h2>1. Print Pattern</h2>
+    <pre id="pattern"></pre>
+    <script>
+        let patternOutput = '';
+        for (let i = 1; i <= 3; i++) {
+            for (let j = 1; j <= i; j++) {
+                patternOutput += '*';
+            }
+            patternOutput += '<br>';
+        }
+        document.getElementById('pattern').innerHTML = patternOutput;
+    </script>
+
+    <!-- Question 2: Factorial of a Number -->
+    <h2>2. Factorial of a Number</h2>
+    <button onclick="calculateFactorial()">Calculate Factorial</button>
+    <p id="factorialResult"></p>
+    <script>
+        function calculateFactorial() {
+            let number = parseInt(prompt("Enter a number:"));
+            let result = 1;
+            for (let i = 1; i <= number; i++) {
+                result *= i;
+            }
+            document.getElementById('factorialResult').innerText = `Factorial of ${number} is: ${result}`;
+        }
+    </script>
+
+    <!-- Question 3: Capitalize First Letter of Words -->
+    <h2>3. Capitalize First Letter of Words</h2>
+    <button onclick="capitalizeSentence()">Capitalize Sentence</button>
+    <p id="capitalizedSentence"></p>
+    <script>
+        function capitalizeSentence() {
+            let sentence = prompt("Enter a sentence:");
+            let capitalized = sentence.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+            document.getElementById('capitalizedSentence').innerText = capitalized;
+        }
+    </script>
+
+    <!-- Question 4: Temperature Categorization -->
+    <h2>4. Temperature Categorization</h2>
+    <button onclick="categorizeTemperature()">Check Temperature</button>
+    <p id="temperatureCategory"></p>
+    <script>
+        function categorizeTemperature() {
+            let temperature = parseFloat(prompt("Enter the temperature:"));
+            let category;
+            if (temperature < 0) {
+                category = "Freezing";
+            } else if (temperature >= 0 && temperature <= 15) {
+                category = "Cold";
+            } else if (temperature >= 16 && temperature <= 30) {
+                category = "Moderate";
+            } else {
+                category = "Hot";
+            }
+            document.getElementById('temperatureCategory').innerText = `Category: ${category}`;
+        }
+    </script>
+
+    <!-- Question 5: Days Left Until Next New Year -->
+    <h2>5. Days Left Until Next New Year</h2>
+    <p id="daysLeft"></p>
+    <script>
+        let today = new Date();
+        let nextYear = new Date(today.getFullYear() + 1, 0, 1);
+        let timeDiff = nextYear - today;
+        let daysLeft = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+        document.getElementById('daysLeft').innerText = `Days left until next New Year: ${daysLeft}`;
+    </script>
+
+    <!-- Question 6: Print Current Date -->
+    <h2>6. Print Current Date</h2>
+    <p id="currentDate"></p>
+    <script>
+        let currentDate = new Date();
+        let day = currentDate.getDate();
+        let month = currentDate.toLocaleString('default', { month: 'long' });
+        let year = currentDate.getFullYear();
+        document.getElementById('currentDate').innerText = `Today's date is: ${day} ${month} ${year}`;
+    </script>
+
+    <!-- Question 7: Find Index of "locate" -->
+    <h2>7. Find Index of "locate"</h2>
+    <p id="locateIndex"></p>
+    <script>
+        let str = "Please locate where 'locate' occurs!";
+        let index = str.indexOf("locate");
+        document.getElementById('locateIndex').innerText = `Index of 'locate': ${index}`;
+    </script>
+
+    <!-- Question 8: Random Number and Fibonacci -->
+    <h2>8. Random Number and Fibonacci</h2>
+    <button onclick="generateRandomAndFibonacci()">Generate Random Number and Fibonacci</button>
+    <p id="randomNumber"></p>
+    <p id="fibonacciNumbers"></p>
+    <script>
+        function generateRandomAndFibonacci() {
+            let randomNumber = Math.floor(Math.random() * 10) + 1;
+            document.getElementById('randomNumber').innerText = `Random number: ${randomNumber}`;
+
+            function fibonacci(n) {
+                let fib = [0, 1];
+                for (let i = 2; i < n; i++) {
+                    fib[i] = fib[i - 1] + fib[i - 2];
+                }
+                return fib.slice(0, n);
+            }
+
+            let fibNumbers = fibonacci(randomNumber);
+            document.getElementById('fibonacciNumbers').innerText = `Fibonacci numbers below ${randomNumber}: ${fibNumbers.join(', ')}`;
+        }
+    </script>
+
+    <!-- Question 9: Find Highest Value in Array -->
+    <h2>9. Find Highest Value in Array</h2>
+    <button onclick="findHighestValue()">Find Highest Value</button>
+    <p id="highestValue"></p>
+    <script>
+        function findHighestValue() {
+            let numbers = [10, 20, 5, 30, 15];
+            let highest = Math.max(...numbers);
+            document.getElementById('highestValue').innerText = `Highest value in the array: ${highest}`;
+        }
+    </script>
+
+    <!-- Question 10: Book Object -->
+    <h2>10. Book Object</h2>
+    <button onclick="displayBooks()">Display Books</button>
+    <p id="expensiveBooks"></p>
+    <p id="gandhiBook"></p>
+    <script>
+        let books = [
+            { title: "Book 1", author: "Author 1", cost: 450 },
+            { title: "Book 2", author: "Mahatma Gandhi", cost: 600 },
+            { title: "Book 3", author: "Author 3", cost: 700 }
+        ];
+
+        function displayBooks() {
+            // a. Display books with cost > 500
+            let expensiveBooks = books.filter(book => book.cost > 500);
+            document.getElementById('expensiveBooks').innerText = `Books with cost > 500: ${JSON.stringify(expensiveBooks)}`;
+
+            // b. Display book by Mahatma Gandhi
+            let gandhiBook = books.find(book => book.author === "Mahatma Gandhi");
+            document.getElementById('gandhiBook').innerText = `Book by Mahatma Gandhi: ${gandhiBook.title}`;
+        }
+    </script>
+</body>
+</html>
